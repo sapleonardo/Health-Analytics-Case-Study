@@ -32,3 +32,9 @@ This piece of code does not work because, they are trying to aggregate by a func
 #2: How many total measurements do we have per user on average?
 ![AVG_MEASURES_PER_USER_PT3](https://user-images.githubusercontent.com/85455439/131561088-7603143a-d970-4937-98b6-80aa8abcb8c6.png)
 The above code will return two columns: The first column, has each user_id. The second column has the total number of measurements per that id
+
+#3: What is the median number of measurements per user?
+![Median_Values_PT1](https://user-images.githubusercontent.com/85455439/131561931-68f107d1-d13f-4697-80fa-492a26fbac32.png)
+This code will not run because it has not been CAST to the appropriate datatype
+
+
