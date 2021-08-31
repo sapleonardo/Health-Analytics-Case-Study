@@ -61,3 +61,6 @@ The above code doesn't work becuase it should be return a COUNT rather than a SU
 ![1000_ORMORE_Measurements_PTDos](https://user-images.githubusercontent.com/85455439/131565889-cde83745-b3bb-4cb9-9037-aa62e63a21d9.png)
 Only five users have 1000 or more measurements
 
+#6: How many people and what percentage of people have logged glucose measurements?
+![Glucose_COUNTS_PTUNO](https://user-images.githubusercontent.com/85455439/131567435-44723695-7487-4f6f-9360-9e675e2e612a.png)
+This code will not run because there is a syntax error in the SELECT statement and there is no percentage column
