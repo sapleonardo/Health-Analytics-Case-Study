@@ -16,3 +16,8 @@ This code does not run because this query is attempting to elicit a return from 
 ![UNIQUE_USERS](https://user-images.githubusercontent.com/85455439/131555994-98029cd4-fdeb-4a3c-9d71-b48f4a348c81.png)
 #1 Question: The Analytics Team at HealthCO wanted to know how many DISTINCT users they had in the user_logs table
 There are approximately 554 DISTINCT users. 
+
+
+#2: How many total measurements do we have per user on average?
+![AVG_MEASURES_PER_USER_PT1](https://user-images.githubusercontent.com/85455439/131559782-20a447d8-c214-497f-85ed-4976eeba07d5.png)
+For questions 2-6, we had to construct a temporary table user_measure_count
