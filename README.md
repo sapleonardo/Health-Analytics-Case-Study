@@ -47,3 +47,7 @@ The code above reveals that the median values of measurements per user is 2
 This code will not run because you cannot have a HAVING clause without including any fields in your GROUP BY first
 
 
+#4: How many users have three or more measurements?
+![MEASURECOUNT_GREATERTHAN_3_PT2](https://user-images.githubusercontent.com/85455439/131564454-2977a780-40c4-4f07-9d31-62294cbe0111.png)
+The code above reveals that there are 209 users which have 3 or more measurements
+
