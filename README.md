@@ -6,5 +6,6 @@ This dataset was from the user_logs table in the health schema. It is comprised 
 Collected a COUNT of every record in the health.user_logs set ![HEALTH_Data_COUNT](https://user-images.githubusercontent.com/85455439/131539652-9894ae8d-2a8d-4850-8a6d-e4eeb27d3dae.png)
 
 
-![DISTINCT_ID](https://user-images.githubusercontent.com/85455439/131553884-5a094f7a-1a53-4c6c-aac3-6bf698b9a1b1.png)
+![DISTINCT_ID](https://user-images.githubusercontent.com/85455439/131554041-eed5d15c-84d0-4769-85a0-ff7fa6968734.png)
+
 There are 554 DISTINCT user_id's within the user_log table in the health schema. 
