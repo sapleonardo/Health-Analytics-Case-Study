@@ -27,3 +27,8 @@ For questions 2-6, we had to construct a temporary table user_measure_count
 #2: How many total measurements do we have per user on average?
 ![AVG_MEASURES_PER_USER_PT2](https://user-images.githubusercontent.com/85455439/131560226-a1b86933-04d7-4953-b159-8dbb803be92b.png)
 This piece of code does not work because, they are trying to aggregate by a function which does not exist. They also failed to add a GROUP BY. 
+
+
+#2: How many total measurements do we have per user on average?
+![AVG_MEASURES_PER_USER_PT3](https://user-images.githubusercontent.com/85455439/131561088-7603143a-d970-4937-98b6-80aa8abcb8c6.png)
+The above code will return two columns: The first column, has each user_id. The second column has the total number of measurements per that id
