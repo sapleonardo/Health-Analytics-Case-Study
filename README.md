@@ -51,3 +51,8 @@ This code will not run because you cannot have a HAVING clause without including
 ![MEASURECOUNT_GREATERTHAN_3_PT2](https://user-images.githubusercontent.com/85455439/131564454-2977a780-40c4-4f07-9d31-62294cbe0111.png)
 The code above reveals that there are 209 users which have 3 or more measurements
 
+
+#5: How many users have 1000 or more measurements?
+![1000_ORmore_measurements_PTUNO](https://user-images.githubusercontent.com/85455439/131565347-89759ba2-19ce-4931-a65f-379252a1ed7e.png)
+The above code doesn't work becuase it should be return a COUNT rather than a SUM
+
