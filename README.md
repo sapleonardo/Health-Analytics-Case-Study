@@ -37,4 +37,8 @@ The above code will return two columns: The first column, has each user_id. The 
 ![Median_Values_PT1](https://user-images.githubusercontent.com/85455439/131561931-68f107d1-d13f-4697-80fa-492a26fbac32.png)
 This code will not run because it has not been CAST to the appropriate datatype
 
+#3: What is the median number of measurements per user?
+![AVG_MEASURES_PER_USER_PT3](https://user-images.githubusercontent.com/85455439/131563213-0b6421e8-e8ff-4a17-8c31-e97949c1b5c6.png)
+The code above returns a median value for the measurements per user which is 2
+
 
