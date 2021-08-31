@@ -56,3 +56,8 @@ The code above reveals that there are 209 users which have 3 or more measurement
 ![1000_ORmore_measurements_PTUNO](https://user-images.githubusercontent.com/85455439/131565347-89759ba2-19ce-4931-a65f-379252a1ed7e.png)
 The above code doesn't work becuase it should be return a COUNT rather than a SUM
 
+
+#5: How many users have 1000 or more measurements?
+![1000_ORMORE_Measurements_PTDos](https://user-images.githubusercontent.com/85455439/131565889-cde83745-b3bb-4cb9-9037-aa62e63a21d9.png)
+Only five users have 1000 or more measurements
+
