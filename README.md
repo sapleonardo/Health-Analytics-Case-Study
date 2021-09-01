@@ -80,4 +80,17 @@ The code above will not run successfully because you cannot put an aggregate fun
 The above code shows that there were 295 users who had 2 or more measurements
 
 
+#8: How many users have all three unique measures?
+![ALL_THREE_UNIQUE_MEASURESPTUNO](https://user-images.githubusercontent.com/85455439/131726167-3a793379-e106-4ea0-bf38-2a97e7cd9695.png)
+The above code will not run because the name of the table is mispelled. Also, the COUNT in the SELECT statement isn't specific enough
 
+
+#8: How many users have all three unique measures?
+![THREE_UNIQUE_MEASURES_PTDOS](https://user-images.githubusercontent.com/85455439/131726625-22d204f4-7f0a-4492-b518-21a6c7e2ccbb.png)
+The above code shows that there are 50 users who have all three unique measures
+
+
+#9:  What is the median systolic/diastolic blood pressure values?
+![BLOODPRESSURE_MEDIAN_VALUES_PTUNO](https://user-images.githubusercontent.com/85455439/131727491-d2693010-9c68-4645-93be-3f6519622cdb.png)
+The above code will not run because the appropriate datatypes have not been CAST to one which fits the query 
+Above code will also not run because the WHERE statement has been designed incorrectly
