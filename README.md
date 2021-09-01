@@ -94,3 +94,9 @@ The above code shows that there are 50 users who have all three unique measures
 ![BLOODPRESSURE_MEDIAN_VALUES_PTUNO](https://user-images.githubusercontent.com/85455439/131727491-d2693010-9c68-4645-93be-3f6519622cdb.png)
 The above code will not run because the appropriate datatypes have not been CAST to one which fits the query 
 Above code will also not run because the WHERE statement has been designed incorrectly
+
+
+#9: What is the median systolic/diastolic blood pressure values?
+![BLOODPRESSURE_MEDIAN_VALUES_PTDOS](https://user-images.githubusercontent.com/85455439/131729457-b6b03b83-5230-4122-bbbc-2d05cd23fba8.png)
+The above code shows that the median blood_pressure values for diastolic and systolic pressure are 126 for systolic and 79 for diastolic
+
