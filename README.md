@@ -64,3 +64,8 @@ Only five users have 1000 or more measurements
 #6: How many people and what percentage of people have logged glucose measurements?
 ![Glucose_COUNTS_PTUNO](https://user-images.githubusercontent.com/85455439/131567435-44723695-7487-4f6f-9360-9e675e2e612a.png)
 This code will not run because there is a syntax error in the SELECT statement and there is no percentage column
+
+
+![Glucose_COUNT_PTDOS](https://user-images.githubusercontent.com/85455439/131723691-47d8758f-95a9-436c-97d7-e4c3435a0850.png)
+Code above shows that there were 325 users who had blood_glucose measurements
+
