@@ -69,3 +69,15 @@ This code will not run because there is a syntax error in the SELECT statement a
 ![Glucose_COUNT_PTDOS](https://user-images.githubusercontent.com/85455439/131723691-47d8758f-95a9-436c-97d7-e4c3435a0850.png)
 Code above shows that there were 325 users who had blood_glucose measurements
 
+
+#7: How many users have 2 or more measurements?
+![TWO_ORMORE_MEASUREMENTS_PTUNO](https://user-images.githubusercontent.com/85455439/131724860-ac1abae0-80d9-49ba-899c-e235c1913a8f.png)
+The code above will not run successfully because you cannot put an aggregate function in a WHERE clause
+
+
+#7: How many users have 2 or more measurements?
+![TWOORMEAUREMENTS_PTDOS](https://user-images.githubusercontent.com/85455439/131725433-8c267504-9c26-46e5-9be5-742cd70d26cb.png)
+The above code shows that there were 295 users who had 2 or more measurements
+
+
+
