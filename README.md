@@ -39,45 +39,108 @@ FROM health.user_logs;
 
 **#1 Question: How many DISTINCT id's in the user_logs table?** 
 
+```sql
+SELECT COUNT(DISTINCT id) as uniqueid_count
+FROM health.user_logs; 
+```
+
+**Results**
+| uniqueid\_count |
+| --------------- |
+| 554             |
+**There are exactly 554 unique id's in the user_log table**
+
+**For questions 2 through 6, a temporary table was created**
+```sql
+DROP TABLE IF EXISTS user_measure_count; 
+CREATE TEMP TABLE user_measure_count AS 
+SELECT id, COUNT(*) AS measure_count, COUNT(DISTINCT measure) AS unique_measures
+FROM health.user_logs
+GROUP BY id; 
+```
+
+```sql
+SELECT *
+FROM user_measure_count; 
+```
+
+**Temporary Table**
+| id                                       | measure\_count | unique\_measures |
+| ---------------------------------------- | -------------- | ---------------- |
+| 004beb6711843b214e80d73df57a3680fdf9700a | 3              | 2                |
+| 007fe1259a4283a991e1f2835ddcdedacf78dde9 | 1              | 1                |
+| 008dd1dc1728bb0b420188963905d259c5533149 | 1              | 1                |
+| 00ae4fa0241952312d518cee728a387bf156f514 | 4              | 1                |
+**Copy of temporary table: user_measure_count**
 
 **#2: How many total measurements do we have per user on average?**
-![AVG_MEASURES_PER_USER_PT1](https://user-images.githubusercontent.com/85455439/131559782-20a447d8-c214-497f-85ed-4976eeba07d5.png)
-**For questions 2-6, we had to construct a temporary table user_measure_count**
 
-
-
-**#2: How many total measurements do we have per user on average?**
-![AVG_MEASURES_PER_USER_PT2](https://user-images.githubusercontent.com/85455439/131560226-a1b86933-04d7-4953-b159-8dbb803be92b.png)
+```sql
+SELECT
+  ROUND(MEAN(measure_count))
+FROM user_measure_count;
+```
 **This piece of code does not work because, they are trying to aggregate by a function which does not exist. They also failed to add a GROUP BY. 
 
-
 **#2: How many total measurements do we have per user on average?**
-![AVG_MEASURES_PER_USER_PT3](https://user-images.githubusercontent.com/85455439/131561088-7603143a-d970-4937-98b6-80aa8abcb8c6.png)
+```sql
+SELECT id, AVG(measure_count) AS measurements_peruser 
+FROM user_measure_count 
+GROUP BY id 
+ORDER BY measurements_peruser DESC; 
+```
 **The above code will return two columns: The first column, has each user_id. The second column has the total number of measurements per that id**
 
+**Results**
+| id                                       | measurements\_peruser |
+| ---------------------------------------- | --------------------- |
+| 054250c692e07a9fa9e62e345231df4b54ff435d | 22325                 |
+| 0f7b13f3f0512e6546b8d2c0d56e564a2408536a | 1589                  |
+| ee653a96022cc3878e76d196b1667d95beca2db6 | 1235                  |
+| abc634a555bbba7d6d6584171fdfa206ebf6c9a0 | 1212                  |
+
+
 #3: What is the median number of measurements per user?
-![Median_Values_PT1](https://user-images.githubusercontent.com/85455439/131561931-68f107d1-d13f-4697-80fa-492a26fbac32.png)
+```sql
+SELECT
+  PERCENTILE_CONTINUOUS(0.5) WITHIN GROUP (ORDER BY id) AS median_value
+FROM user_measure_count;
+```
 This code will not run because it has not been CAST to the appropriate datatype
 
 #3: What is the median number of measurements per user?
-![median_values_peruserPT2 ](https://user-images.githubusercontent.com/85455439/131563338-ebd19128-97d8-41e0-ba33-ec4575958e02.png)
-The code above reveals that the median values of measurements per user is 2 
+```sql
+SELECT ROUND(
+CAST(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY measure_count) AS NUMERIC), 2
+) AS medianmeasurements_peruser 
+FROM user_measure_count; 
+```
+**Results**
+| medianmeasurements\_peruser |
+| --------------------------- |
+| 2                           |
 
+**The code above reveals that the median values of measurements per user is 2**
 
 #4: How many users have three or more measurements?
-![Measurements_Greaterthan_three_PT1](https://user-images.githubusercontent.com/85455439/131564047-cc5eb421-fc5a-42da-9cb9-702c14ea7ca1.png)
-This code will not run because you cannot have a HAVING clause without including any fields in your GROUP BY first
-
+```sql
+SELECT
+  COUNT(*)
+FROM user_measure_count
+HAVING measure >= 3;
+```This code will not run because you cannot have a HAVING clause without including any fields in your GROUP BY first
 
 #4: How many users have three or more measurements?
-![MEASURECOUNT_GREATERTHAN_3_PT2](https://user-images.githubusercontent.com/85455439/131564454-2977a780-40c4-4f07-9d31-62294cbe0111.png)
+```sql
+SELECT COUNT(*) AS user_count 
+FROM user_measure_count 
+WHERE measure_count >= 3; 
+```
 The code above reveals that there are 209 users which have 3 or more measurements
-
 
 #5: How many users have 1000 or more measurements?
 ![1000_ORmore_measurements_PTUNO](https://user-images.githubusercontent.com/85455439/131565347-89759ba2-19ce-4931-a65f-379252a1ed7e.png)
 The above code doesn't work becuase it should be return a COUNT rather than a SUM
-
 
 #5: How many users have 1000 or more measurements?
 ![1000_ORMORE_Measurements_PTDos](https://user-images.githubusercontent.com/85455439/131565889-cde83745-b3bb-4cb9-9037-aa62e63a21d9.png)
