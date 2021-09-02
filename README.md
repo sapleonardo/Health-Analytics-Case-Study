@@ -26,14 +26,18 @@ FROM health.user_logs;
 **The table health.user_logs has a total COUNT of over 43000 records**
 
 **#1 Question: How many DISTINCT id's in the user_logs table?**
-Original Code:
-![DISTINCT_USERS_TAKE_ONE](https://user-images.githubusercontent.com/85455439/131556802-6758f44d-b3ba-4b72-aacf-e21248aadaf8.png)
+
+**Original Code:**
+
+```sql
+SELECT
+  COUNT DISTINCT user_id
+FROM health.user_logs;
+```
+
 **This code does not run because this query is attempting to elicit a return from a field which does not exist within the user_log table**
 
-
-![UNIQUE_USERS](https://user-images.githubusercontent.com/85455439/131555994-98029cd4-fdeb-4a3c-9d71-b48f4a348c81.png)
-**#1 Question: The Analytics Team at HealthCO wanted to know how many DISTINCT users they had in the user_logs table
-There are approximately 554 DISTINCT users.** 
+**#1 Question: How many DISTINCT id's in the user_logs table?** 
 
 
 **#2: How many total measurements do we have per user on average?**
