@@ -25,7 +25,7 @@ FROM health.user_logs;
 
 **The table health.user_logs has a total COUNT of over 43000 records**
 
-**#1 Question: How many DISTINCT id's in the user_logs table?**
+#1 Question: How many DISTINCT id's in the user_logs table?
 
 **Original Code:**
 
@@ -37,7 +37,7 @@ FROM health.user_logs;
 
 **This code does not run because this query is attempting to elicit a return from a field which does not exist within the user_log table**
 
-**#1 Question: How many DISTINCT id's in the user_logs table?** 
+#1 Question: How many DISTINCT id's in the user_logs table?
 
 ```sql
 SELECT COUNT(DISTINCT id) as uniqueid_count
