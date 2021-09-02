@@ -145,49 +145,123 @@ WHERE measure_count >= 3;
 **The code above reveals that there are exactly 209 users with 3 or more measurements**
 
 #5: How many users have 1000 or more measurements?
-![1000_ORmore_measurements_PTUNO](https://user-images.githubusercontent.com/85455439/131565347-89759ba2-19ce-4931-a65f-379252a1ed7e.png)
-The above code doesn't work becuase it should be return a COUNT rather than a SUM
+```sql
+SELECT
+  SUM(id)
+FROM user_measure_count
+WHERE measure_count >= 1000;
+```
+**The above code will not work because the query should return a COUNT rather than a SUM**
 
 #5: How many users have 1000 or more measurements?
-![1000_ORMORE_Measurements_PTDos](https://user-images.githubusercontent.com/85455439/131565889-cde83745-b3bb-4cb9-9037-aa62e63a21d9.png)
-Only five users have 1000 or more measurements
+```sql
+SELECT COUNT(*) AS users 
+  FROM user_measure_count 
+  WHERE measure_count >= 1000;
+```
+**Results**
+| users |
+| ----- |
+| 5     |
 
-#6: How many people and what percentage of people have logged glucose measurements?
-![Glucose_COUNTS_PTUNO](https://user-images.githubusercontent.com/85455439/131567435-44723695-7487-4f6f-9360-9e675e2e612a.png)
-This code will not run because there is a syntax error in the SELECT statement and there is no percentage column
+**The above code reveals that there are exactly 5 users which have 1000 or more measurements**
 
+#6: How many people have logged glucose measurements
+```sql
+SELECT
+  COUNT DISTINCT id
+FROM health.user_logs
+WHERE measure is 'blood_sugar';
+```
+**Above code will not run due to syntax errors in SELECT statement and in the WHERE clause**
 
-![Glucose_COUNT_PTDOS](https://user-images.githubusercontent.com/85455439/131723691-47d8758f-95a9-436c-97d7-e4c3435a0850.png)
-Code above shows that there were 325 users who had blood_glucose measurements
+#6: How many people have logged glucose measurements
+```sql
+  SELECT COUNT(DISTINCT id) as glucose_users 
+  FROM health.user_logs 
+  WHERE measure = 'blood_glucose'; 
+```
+**Results**
+| glucose\_users |
+| -------------- |
+| 325            |
+|                |
 
+**Above code reveals that there are exactly 325 users with blood_glucose measurements**
 
 #7: How many users have 2 or more measurements?
-![TWO_ORMORE_MEASUREMENTS_PTUNO](https://user-images.githubusercontent.com/85455439/131724860-ac1abae0-80d9-49ba-899c-e235c1913a8f.png)
-The code above will not run successfully because you cannot put an aggregate function in a WHERE clause
-
+```sql
+SELECT
+  COUNT(*)
+FROM user_measure_count
+WHERE COUNT(DISTINCT measures) >= 2;
+```
+**The code above will not run successfully because you cannot put an aggregate function in a WHERE clause**
 
 #7: How many users have 2 or more measurements?
-![TWOORMEAUREMENTS_PTDOS](https://user-images.githubusercontent.com/85455439/131725433-8c267504-9c26-46e5-9be5-742cd70d26cb.png)
-The above code shows that there were 295 users who had 2 or more measurements
+```sql
+SELECT COUNT(*) AS user_count 
+FROM user_measure_count 
+WHERE measure_count >= 2;
+```
+**Results**
+| user\_count |
+| ----------- |
+| 295         |
 
+**The above code shows that there were 295 users who had 2 or more measurements**
 
 #8: How many users have all three unique measures?
-![ALL_THREE_UNIQUE_MEASURESPTUNO](https://user-images.githubusercontent.com/85455439/131726167-3a793379-e106-4ea0-bf38-2a97e7cd9695.png)
-The above code will not run because the name of the table is mispelled. Also, the COUNT in the SELECT statement isn't specific enough
-
+```sql
+SELECT
+  COUNT(*)
+FROM usr_measure_count
+WHERE unique_measures = 3;
+```
+**The above code will not run because the name of the table is mispelled. Also, the COUNT in the SELECT statement isn't specific enough**
 
 #8: How many users have all three unique measures?
-![THREE_UNIQUE_MEASURES_PTDOS](https://user-images.githubusercontent.com/85455439/131726625-22d204f4-7f0a-4492-b518-21a6c7e2ccbb.png)
-The above code shows that there are 50 users who have all three unique measures
+```sql
+SELECT COUNT(DISTINCT id) AS unique_usercount
+FROM user_measure_count 
+WHERE unique_measures = 3; 
+```
+**Results**
+| unique\_usercount |
+| ----------------- |
+| 50                |
 
 
 #9:  What is the median systolic/diastolic blood pressure values?
-![BLOODPRESSURE_MEDIAN_VALUES_PTUNO](https://user-images.githubusercontent.com/85455439/131727491-d2693010-9c68-4645-93be-3f6519622cdb.png)
-The above code will not run because the appropriate datatypes have not been CAST to one which fits the query 
-Above code will also not run because the WHERE statement has been designed incorrectly
-
+```sql
+SELECT
+  PERCENTILE_CONT(0.5) WITHIN (ORDER BY systolic) AS median_systolic
+  PERCENTILE_CONT(0.5) WITHIN (ORDER BY diastolic) AS median_diastolic
+FROM health.user_logs
+WHERE measure is blood_pressure;
+```
+**The above code will not run because the appropriate datatypes have not been CAST to one which fits the query**
+**Above code will also not run because the WHERE statement has been designed incorrectly**
 
 #9: What is the median systolic/diastolic blood pressure values?
-![BLOODPRESSURE_MEDIAN_VALUES_PTDOS](https://user-images.githubusercontent.com/85455439/131729457-b6b03b83-5230-4122-bbbc-2d05cd23fba8.png)
-The above code shows that the median blood_pressure values for diastolic and systolic pressure are 126 for systolic and 79 for diastolic
+```sql
+SELECT 
+  ROUND (
+    CAST(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY systolic) AS NUMERIC),
+    2
+    ) AS median_systolic,
+    ROUND (
+      CAST(PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY diastolic) AS NUMERIC),  
+      2
+      ) AS median_diastolic 
+    FROM health.user_logs
+    WHERE measure = 'blood_pressure';
+```
+**Results**
+| median\_systolic | median\_diastolic |
+| ---------------- | ----------------- |
+| 126              | 79                |
+
+**The above code shows that the median blood_pressure values for diastolic and systolic pressure are 126 for systolic and 79 for diastolic
+
 
