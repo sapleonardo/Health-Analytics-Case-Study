@@ -136,7 +136,11 @@ SELECT COUNT(*) AS user_count
 FROM user_measure_count 
 WHERE measure_count >= 3; 
 ```
+| user\_count |
+| ----------- |
+| 209         |
 The code above reveals that there are 209 users which have 3 or more measurements
+
 
 #5: How many users have 1000 or more measurements?
 ![1000_ORmore_measurements_PTUNO](https://user-images.githubusercontent.com/85455439/131565347-89759ba2-19ce-4931-a65f-379252a1ed7e.png)
