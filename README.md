@@ -1,6 +1,15 @@
 **Health Analytics Case Study: The goal of this project was to debug SQL code written by the HealthCo Analytics Team as well as answer business questions for the GM**
+```sql
+SELECT * 
+FROM health.user_logs; 
+```
+**Results**
+| id                                       | log\_date                | measure        | measure\_value | systolic | diastolic |
+| ---------------------------------------- | ------------------------ | -------------- | -------------- | -------- | --------- |
+| fa28f948a740320ad56b81a24744c8b81df119fa | 2020-11-15T00:00:00.000Z | weight         | 46.03959       |          |           |
+| 1a7366eef15512d8f38133e7ce9778bce5b4a21e | 2020-10-10T00:00:00.000Z | blood\_glucose | 97             | 0        | 0         |
+| bd7eece38fb4ec71b3282d60080d296c4cf6ad5e | 2020-10-18T00:00:00.000Z | blood\_glucose | 120            | 0        | 0         |
 
-![Health_Data_Info](https://user-images.githubusercontent.com/85455439/131554524-e6bca2e3-3a25-4c75-9b08-2ad712a2b368.png)
 **user_logs table within the health schema is comprised of six total columns**
 
 
