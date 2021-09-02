@@ -48,6 +48,7 @@ FROM health.user_logs;
 | uniqueid\_count |
 | --------------- |
 | 554             |
+
 **There are exactly 554 unique id's in the user_log table**
 
 **For questions 2 through 6, a temporary table was created**
