@@ -12,9 +12,18 @@ FROM health.user_logs;
 
 **user_logs table within the health schema is comprised of six total columns**
 
+**Follwoing code returns a total count of every record in this table**
+```sql
+SELECT COUNT(*) AS totalrecord_count 
+FROM health.user_logs; 
+```
 
-![HEALTH_Data_COUNT](https://user-images.githubusercontent.com/85455439/131554804-29d4810a-7be1-4993-80f7-f8b055314e99.png)
-There are approximately 43,000 records within this table
+**Results**
+| totalrecord\_count |
+| ------------------ |
+| 43891              |
+
+**The table health.user_logs has a total COUNT of over 43000 records**
 
 **#1 Question: How many DISTINCT id's in the user_logs table?**
 Original Code:
